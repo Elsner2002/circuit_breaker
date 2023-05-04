@@ -12,7 +12,7 @@ public class ApiGatewayApplication {
   
 	@RequestMapping("/currency-conversion")
 	public Mono<String> conversionCurrency() {
-	  return circuitBreacker.readingList();
+	  return circuitBreacker.currencyConvertion();
 	}
 
 	public static void main(String[] args) {

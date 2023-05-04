@@ -23,7 +23,7 @@ public class CircuitBreacker {
     this.circuitBreaker = circuitBreakerFactory.create("recommended");
   }
 
-  public Mono<String> readingList() {
+  public Mono<String> currencyConvertion() {
     return readingListCircuitBreaker.run(webClient.get().uri("/recommended").retrieve().bodyToMono(String.class), throwable -> {
       LOG.warn("Error making request to conversion service", throwable);
       return Mono.just("Cloud Native Java (O'Reilly)");
