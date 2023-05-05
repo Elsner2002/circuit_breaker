@@ -1,10 +1,7 @@
 package com.engsoft2.apigateway;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import reactor.core.publisher.Mono;
+import org.apache.hc.core5.http.HttpStatus;
 
-import org.apache.hc.coreS.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

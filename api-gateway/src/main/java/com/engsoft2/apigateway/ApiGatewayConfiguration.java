@@ -11,17 +11,31 @@ public class ApiGatewayConfiguration {
 	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(p -> p.path("/currency-exchange/**")
-					.fillters(f->f.circuitBreaker(
+					.filters(f->f.circuitBreaker(
 						c->c.setName("circuitbreaker").setFallbackUri("forward:/open-circuit-breaker")))
 					.uri("lb://currency-exchange"))
 				.route(p -> p.path("/currency-conversion/**")
-					.fillters(f->f.circuitBreaker(
+					.filters(f->f.circuitBreaker(
 						c->c.setName("circuitbreaker").setFallbackUri("forward:/open-circuit-breaker")))
 					.uri("lb://currency-conversion"))
 				.route(p -> p.path("/currency-conversion-feign/**")
-					.fillters(f->f.circuitBreaker(
+					.filters(f->f.circuitBreaker(
 						c->c.setName("circuitbreaker").setFallbackUri("forward:/open-circuit-breaker")))
 					.uri("lb://currency-conversion"))
 				.build();
 	}    
 }
+
+
+// .route(p -> p.path("/currency-exchange/**")
+// 					.filters(f->f.circuitBreaker(
+// 						c->c.setName("circuitbreaker").setFallbackUri("forward:/open-circuit-breaker")))
+// 					.uri("lb://currency-exchange"))
+// 				.route(p -> p.path("/currency-conversion/**")
+// 					.filters(f->f.circuitBreaker(
+// 						c->c.setName("circuitbreaker").setFallbackUri("forward:/open-circuit-breaker")))
+// 					.uri("lb://currency-conversion"))
+// 				.route(p -> p.path("/currency-conversion-feign/**")
+// 					.filters(f->f.circuitBreaker(
+// 						c->c.setName("circuitbreaker").setFallbackUri("forward:/open-circuit-breaker")))
+// 					.uri("lb://currency-conversion"))
